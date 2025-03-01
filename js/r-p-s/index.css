@@ -1,0 +1,279 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #87ceeb, #b0e0e6);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  color: #2c3e50;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+
+.score {
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background: rgba(135, 206, 235, 0.2);
+}
+
+.score h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.score p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.result {
+  margin: 2rem 0;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.choice {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.choice img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.choice span {
+  display: block;
+  margin-top: 0.5rem;
+  color: #2c3e50;
+}
+
+.choice:hover {
+  transform: translateY(-10px);
+}
+
+.choice:hover img {
+  transform: rotate(15deg);
+}
+
+.game-status {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.player-hand img,
+.computer-hand img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+@keyframes shakePlayer {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-30deg);
+  }
+  75% {
+    transform: rotate(30deg);
+  }
+}
+
+@keyframes shakeComputer {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(30deg);
+  }
+  75% {
+    transform: rotate(-30deg);
+  }
+}
+
+.shake {
+  animation: shakePlayer 0.5s ease;
+}
+
+.shake-computer {
+  animation: shakeComputer 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result p {
+  animation: fadeIn 0.5s ease;
+}
+
+@media (max-width: 768px) {
+  .choices {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .score-board {
+    gap: 2rem;
+  }
+
+  .game-status {
+    gap: 2rem;
+  }
+
+  .choice img {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* 승패 색상 */
+.win-text {
+  color: #2ecc71 !important;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+}
+
+.lose-text {
+  color: #e74c3c !important;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+}
+
+/* 남은 횟수 강조 */
+.rounds {
+  font-weight: bold;
+  color: #34495e;
+}
+
+/* 승리한 플레이어 점수 강조 */
+.score.winner {
+  animation: winnerPulse 1s ease infinite;
+  background: rgba(46, 204, 113, 0.2);
+  border: 2px solid #2ecc71;
+}
+
+/* 최종 결과 스타일 */
+.final-result {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.final-result.win {
+  color: #2ecc71;
+  text-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+}
+
+.final-result.lose {
+  color: #e74c3c;
+  text-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+
+@keyframes winnerPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(46, 204, 113, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}
+
+/* CSS 추가 */
+.reset-btn {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.reset-btn:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+/* 게임 종료 시 선택 버튼 비활성화 스타일 */
+.choice.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.scissors-icon {
+  transform: rotate(90deg);
+}
+
+/* 애니메이션 중에도 회전을 유지하기 위해 */
+.shake .scissors-icon,
+.shake-computer .scissors-icon {
+  transform: rotate(90deg);
+}

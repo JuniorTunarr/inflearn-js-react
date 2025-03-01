@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위 바위 보</title>
+    <link rel="stylesheet" href="index.css" />
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <h1 class="title">가위 바위 보</h1>
+
+      <div class="score-board">
+        <div class="score">
+          <h2>플레이어</h2>
+          <p id="player-score">0</p>
+        </div>
+        <div class="score">
+          <h2>컴퓨터</h2>
+          <p id="computer-score">0</p>
+        </div>
+      </div>
+
+      <div class="result">
+        <p>선택하기</p>
+        <p class="rounds">남은 횟수: 10</p>
+        <button class="reset-btn hidden">다시 시작하시겠습니까?</button>
+      </div>
+
+      <div class="choices">
+        <button class="choice" data-choice="scissors">
+          <i class="far fa-hand-scissors fa-4x scissors-icon"></i>
+          <span>가위</span>
+        </button>
+        <button class="choice" data-choice="rock">
+          <i class="far fa-hand-rock fa-4x"></i>
+          <span>바위</span>
+        </button>
+        <button class="choice" data-choice="paper">
+          <i class="far fa-hand-paper fa-4x"></i>
+          <span>보</span>
+        </button>
+      </div>
+
+      <div class="game-status">
+        <div class="player-hand">
+          <i class="far fa-hand-rock fa-5x"></i>
+        </div>
+        <div class="computer-hand">
+          <i class="far fa-hand-rock fa-5x"></i>
+        </div>
+      </div>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
